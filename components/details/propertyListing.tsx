@@ -45,24 +45,15 @@ function PropertyList() {
 
     return (
         <div>
-            <h1>Properties for Sale</h1>
-            <ul>
-                {properties.map((property: Property) => (
-                    // <li key={property.id}>
-                    //     <h2>{property.title}</h2>
-                    // </li>
-
-                    <Carousel infiniteLoop autoPlay showThumbs={false} showStatus={false}>
-                        {chunkedImages.map((chunk: any, index: any) => (
-                            <div key={index} className="flex justify-center">
-                                {chunk.map((image: any, i: any) => (
-                                    <PropertyCard key={i} image={image} data={properties} />
-                                ))}
-                            </div>
+            <Carousel infiniteLoop autoPlay showThumbs={false} showStatus={false}>
+                {chunkedImages.map((chunk: any, index: any) => (
+                    <div key={index} className="flex justify-center">
+                        {chunk.map((image: any, i: any) => (
+                            <PropertyCard key={i} image={image} />
                         ))}
-                    </Carousel>
+                    </div>
                 ))}
-            </ul>
+            </Carousel>
         </div>
     );
 }

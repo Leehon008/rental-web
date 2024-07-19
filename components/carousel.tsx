@@ -19,7 +19,7 @@ const CarouselComponent = async ({ images }: any) => {
 
     return (
         <Suspense  >
-            <Carousel infiniteLoop autoPlay showThumbs={false} showStatus={false}>
+            <Carousel className="hidden" infiniteLoop autoPlay showThumbs={false} showStatus={false}>
                 {chunkedImages.map((chunk: any, index: any) => (
                     <div key={index} className="flex justify-center">
                         {chunk.map((image: any, i: any) => (
