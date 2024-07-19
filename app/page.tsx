@@ -54,12 +54,10 @@ export default function Home() {
     },
   ];
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-
-
+    <section className="flex flex-col items-center justify-center gap-4 py-2">
 
       <div className="w-full padding-top:1px col-span-12 sm:col-span-7">
-        <h1 className="top-1 flex-col items-start"><strong>Properties For Sale</strong></h1>
+        <h3 className="top-1 flex-col items-start text-black font-medium text-2xl"><strong>Properties For Sale</strong></h3>
       </div>
       <div className="w-full flex flex-col gap-4">
 
