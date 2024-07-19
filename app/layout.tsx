@@ -48,17 +48,30 @@ export default function RootLayout({
             <main className="container mx-auto  max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
+            <footer className="w-full flex justify-between px-6 py-3 bg-blue-900 text-white">
+              <div className="flex items-center">
+                &copy; 2024 Sold.co.zw. All rights reserved.
+              </div>
+              <div className="flex items-center gap-2 justify-between">
+                <Link
+                  isExternal
+                  className="flex items-center gap-1 text-current"
+                  href="#"
+                  title="Privacy Policy"
+                >
+                  <p className="text-white">Privacy Policy</p>
+                </Link>
+                <Link
+                  isExternal
+                  className="flex items-center gap-1 text-current"
+                  href="/"
+                  title="Terms of Service"
+                >
+                  <p className="text-white">Terms of Service</p>
+                </Link>
+              </div>
             </footer>
+
           </div>
         </Providers>
       </body>
