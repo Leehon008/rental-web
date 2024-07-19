@@ -1,42 +1,25 @@
+import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import React from 'react';
-import { Card, CardHeader, CardFooter, Button } from '@nextui-org/react';
-import Image from 'next/image';
 
-interface Property {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-    status: string;
-}
-
-interface PropertyCardProps {
-    property: Property;
-}
-
-const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => (
-    <Card isFooterBlurred className="w-full h-[300px] relative flex flex-grid flex-direction:horizontal gap-2 items-start">
-        <CardHeader className="absolute z-10 top-1 flex-col items-start">
-            <p className="text-tiny text-white/60 uppercase font-bold">{property.status}</p>
-            <h4 className="text-black font-medium text-2xl">{property.title}</h4>
-        </CardHeader>
-        <div className="relative w-full h-full">
-            <Image
-                alt={property.title}
-                src={property.image}
-                fill
-                className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-            />
-        </div>
-        <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-            <div>
-                <p className="text-black text-tiny">{property.description}</p>
+const PropertyCard = ({ image, data }: any) => {
+    return (
+        <div className="w-full sm:w-1/3 px-2">
+            <div className="relative">
+                {/* Replace Image and Card Footer with your actual implementation */}
+                <img src={image.src} alt={image.alt} className="w-full h-80 object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white">
+                    <p className="text-sm text-white uppercase font-bold">{image.label}</p>
+                    <h4 className="text-xl font-semibold">{image.title}</h4>
+                    <div className="mt-2 flex justify-between">
+                        <p className="text-xs text-white">Available soon.</p>
+                        <button className="text-xs text-white bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded">
+                            Notify Me
+                        </button>
+                    </div>
+                </div>
             </div>
-            <Button className="text-tiny" color="primary" radius="full" size="sm">
-                Notify Me
-            </Button>
-        </CardFooter>
-    </Card>
-);
+        </div>
+    );
+};
 
 export default PropertyCard;

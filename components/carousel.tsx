@@ -1,38 +1,34 @@
-import { Button } from '@nextui-org/button';
-import { Card, CardHeader, CardFooter, Image } from '@nextui-org/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import PropertyCard from './propertyCard'; // Import your Card component here
+import { Card } from '@nextui-org/react';
+import { getServerSideProps } from './services/apiService';
+import { Suspense } from 'react';
 
-const CarouselComponent = ({ images }: any) => {
+const CarouselComponent = async ({ images }: any) => {
+
+    // Chunk the images array into groups of 3
+    const chunkedImages = images.reduce((resultArray: any, item: any, index: any) => {
+        const chunkIndex = Math.floor(index / 3); // 3 items per slide
+        if (!resultArray[chunkIndex]) {
+            resultArray[chunkIndex] = []; // start a new chunk
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
+    }, []);
+
     return (
-        <Carousel infiniteLoop autoPlay>
-            {images.map((image: any, index: any) => (
-                <>
-                    <div key={index}>
-                        <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
-                            <CardHeader className="absolute z-10 top-1 flex-col items-start">
-                                <p className="text-tiny text-white/60 uppercase font-bold">New</p>
-                                <h4 className="text-black font-medium text-2xl">Acme camera</h4>
-                            </CardHeader>
-                            <Image
-                                removeWrapper
-                                className="z-0 w-full h-full scale-125 h-300 -translate-y-6 object-cover"
-                                src={image.src} alt={image.alt}
-                            />
-                            <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-                                <div>
-                                    <p className="text-black text-tiny">Available soon.</p>
-                                    <p className="text-black text-tiny">Get notified.</p>
-                                </div>
-                                <Button className="text-tiny" color="primary" radius="full" size="sm">
-                                    Notify Me
-                                </Button>
-                            </CardFooter>
-                        </Card>
+        <Suspense  >
+            <Carousel infiniteLoop autoPlay showThumbs={false} showStatus={false}>
+                {chunkedImages.map((chunk: any, index: any) => (
+                    <div key={index} className="flex justify-center">
+                        {chunk.map((image: any, i: any) => (
+                            <PropertyCard key={i} image={image} />
+                        ))}
                     </div>
-                </>
-            ))}
-        </Carousel>
+                ))}
+            </Carousel>
+        </Suspense>
     );
 };
 
