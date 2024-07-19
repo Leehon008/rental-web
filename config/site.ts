@@ -1,30 +1,55 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
+  name: "Rental Website Next.js + NextUI",
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
+    // {
+    //   label: "Home",
+    //   href: "/",
+    // },
+    // {
+    //   label: "Docs",
+    //   href: "/docs",
+    // },
+    // {
+    //   label: "Pricing",
+    //   href: "/pricing",
+    // },
+    // {
+    //   label: "Blog",
+    //   href: "/blog",
+    // },
+    // {
+    //   label: "About",
+    //   href: "/about",
+    // },
     {
-      label: "Home",
-      href: "/",
+      label: "For Sale",
+      href: "/sale",
     },
     {
-      label: "Docs",
-      href: "/docs",
+      label: "To Rent",
+      href: "/rentals",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "New Developments",
+      href: "/new-dev",
+    },
+    {
+      label: "Showdays",
+      href: "/showdays",
+    },
+    {
+      label: "Agencies",
+      href: "/agencies",
     },
     {
       label: "Blog",
       href: "/blog",
     },
-    {
-      label: "About",
-      href: "/about",
-    },
   ],
+
   navMenuItems: [
     {
       label: "Profile",
