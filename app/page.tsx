@@ -12,6 +12,7 @@ import ImageCarousel from "@/components/carousel";
 import CarouselComponent from "@/components/carousel";
 import { getServerSideProps } from "@/components/services/apiService";
 import PropertyList from "@/components/details/propertyListing";
+import PropertyRental from "@/components/details/propertyRentals";
 // import { MyCard } from "@/components/card";
 
 export default async function Home() {
@@ -85,6 +86,16 @@ export default async function Home() {
         <CarouselComponent images={images} />
       </div>
 
+      <div className="w-full padding-top:1px col-span-12 sm:col-span-7">
+        <h3 className="top-1 flex-col items-start text-black font-medium text-2xl"><strong>Properties For Rent</strong></h3>
+      </div>
+      <div className="w-full flex flex-col gap-4">
+        <div className="flex flex-grid flex-direction:horizontal gap-2 items-start">
+          <PropertyRental />
+        </div>
+        <CarouselComponent images={images} />
+      </div>
+
       <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
         {list.map((item, index) => (
           <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
@@ -104,7 +115,6 @@ export default async function Home() {
             </CardFooter>
           </Card>
         ))}
-
       </div>
 
     </section>

@@ -21,26 +21,25 @@ const fetcher = async (url: string) => {
     return data.data; // Assuming 'data' contains the array of properties
 };
 
-function PropertyList() {
+function PropertyRental() {
     const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/latest', fetcher);
 
     if (error) return <div>Error loading properties</div>;
     if (!properties) return <div>Loading...</div>;
 
-    console.log('...rentals..', properties);
-    let latestPropertiesForSale = properties.latestPropertiesForSale;
+    console.log('...rentals..', properties.latestPropertiesToRent);
 
-    // Check if properties is an array before mapping over it
-    if (!Array.isArray(latestPropertiesForSale)) {
-        console.error('Properties data is not an array:', latestPropertiesForSale);
+    let latestPropertiesToRent = properties.latestPropertiesToRent;
+
+    if (!Array.isArray(latestPropertiesToRent)) {
+        console.error('Properties data is not an array:', latestPropertiesToRent);
         return <div>Unexpected data format</div>;
     }
 
-    // Chunk the images array into groups of 3
-    const chunkedImages = latestPropertiesForSale.reduce((resultArray: any, item: any, index: any) => {
-        const chunkIndex = Math.floor(index / 3); // 3 items per slide
+    const rentProperties = latestPropertiesToRent.reduce((resultArray: any, item: any, index: any) => {
+        const chunkIndex = Math.floor(index / 3);
         if (!resultArray[chunkIndex]) {
-            resultArray[chunkIndex] = []; // start a new chunk
+            resultArray[chunkIndex] = [];
         }
         resultArray[chunkIndex].push(item);
         return resultArray;
@@ -49,7 +48,7 @@ function PropertyList() {
     return (
         <div>
             <Carousel infiniteLoop autoPlay showThumbs={false} showStatus={false}>
-                {chunkedImages.map((chunk: any, index: any) => (
+                {rentProperties.map((chunk: any, index: any) => (
                     <div key={index} className="flex justify-center">
                         {chunk.map((image: any, i: any) => (
                             <PropertyCard key={i} image={image} />
@@ -61,4 +60,4 @@ function PropertyList() {
     );
 }
 
-export default PropertyList;
+export default PropertyRental;

@@ -1,5 +1,7 @@
-import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { Button, Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react';
 import React from 'react';
+import { RedWhatsAppIcon } from './icons';
+import { FaHome, FaUser, FaPhone, FaWhatsapp, FaMailchimp, FaMailBulk } from 'react-icons/fa';
 
 const PropertyCard = ({ image, data }: any) => {
 
@@ -18,18 +20,37 @@ const PropertyCard = ({ image, data }: any) => {
             <div className="relative">
                 {/* Replace Image and Card Footer with your actual implementation */}
                 <img src={firstImage} alt={image.alt} className="w-full h-80 object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white">
-                    <p className="text-sm text-white uppercase font-bold">{image.label}</p>
-                    <h4 className="text-xl font-semibold">{image.title}</h4>
-                    <div className="mt-2 flex justify-between">
-                        <p className="text-xs text-white">Available soon.</p>
-                        <button className="text-xs text-white bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded">
-                            Notify Me
-                        </button>
+                <div className="absolute bottom-0   left-0 right-0 p-4 bg-white bg-opacity-80 text-white">
+                    <p className="text-xs text-black">Property Type</p>
+                    <h4 className="text-sm font-semibold text-black ">{image.title}</h4>
+                    <p className="text-xs text-black justify-start">{image.address}</p>
+                    <p className="text-sm text-black justify-start">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
+
+                    <hr className='width:1.5px bg-black' />
+                    <div className="h-8 flex justify-between">
+                        <div className="mt-2 flex justify-start">
+                            <div className="flex items-center space-x-4">
+                                <button className="text-xs text-red-500 hover:bg-blue-600 px-2 py-1 rounded-full border border-danger-300">
+                                    <FaWhatsapp className="text-xl" />
+                                </button>
+                                <button className="text-xs text-red-500 hover:bg-blue-600 px-2 py-1 rounded-full border border-danger-300">
+                                    <FaPhone className="text-xl" />
+                                </button>
+                                <button className="text-xs text-red-500 hover:bg-blue-600 px-2 py-1 rounded-full border border-danger-300">
+                                    <FaMailBulk className="text-xl" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="mt-2 flex justify-end">
+                            <button className="text-xs outline text-danger  hover:bg-blue-600 px-2 py-1 rounded">
+                                Details
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
