@@ -43,7 +43,7 @@ const PropertyCard = ({ image, data }: any) => {
                         </div>
 
                         <div className="mt-2 flex justify-end">
-                            <button className="text-xs outline text-danger  hover:bg-blue-600 px-2 py-1 rounded">
+                            <button className="text-xs outline text-danger border-danger-300 hover:bg-blue-600 px-2 py-1 rounded">
                                 Details
                             </button>
                         </div>

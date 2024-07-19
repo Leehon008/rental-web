@@ -7,3 +7,28 @@
     margin-right: 0.3px;
     /*  margin-left: 0.3px; */
 }
+
+/* Example styles for grid view */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.grid-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Example styles for list view */
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+}

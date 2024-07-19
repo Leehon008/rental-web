@@ -7,12 +7,13 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import { Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Image } from "@nextui-org/react";
 import ImageCarousel from "@/components/carousel";
 import CarouselComponent from "@/components/carousel";
 import { getServerSideProps } from "@/components/services/apiService";
 import PropertyList from "@/components/details/propertyListing";
 import PropertyRental from "@/components/details/propertyRentals";
+import { FaBeer, FaBusinessTime, FaHouseUser, FaMoneyBill, FaWarehouse } from "react-icons/fa";
 // import { MyCard } from "@/components/card";
 
 export default async function Home() {
@@ -58,8 +59,48 @@ export default async function Home() {
       price: "$12.20",
     },
   ];
-  // const data = await getServerSideProps();
-  // console.log('...data from api..', data);
+
+  const data = [
+    {
+      title: 'Buy a Property',
+      description: 'Find your place with an immersive photo experience and the most listings, including things you won\'t find anywhere else.',
+      buttonText: 'Browse Properties For Sale',
+      icon: FaHouseUser
+    },
+    {
+      title: 'Sell a House',
+      description: 'Discover rental homes with an extensive selection of amenities tailored to your lifestyle.',
+      buttonText: 'See your Options',
+      icon: FaMoneyBill
+    },
+    {
+      title: 'Rent a Property',
+      description: 'Discover rental homes with an extensive selection of amenities tailored to your lifestyle.',
+      buttonText: 'See your Options',
+      icon: FaWarehouse
+    }
+  ];
+
+  const CardComponent = ({ title, description, buttonText, Icon }: any) => (
+    <Card className="max-w-[400px]">
+      <CardHeader className="flex gap-3 justify-center">
+        <div className="flex flex-col items-center justify-center">
+          <Icon className="text-danger text-6xl" />
+          <p className="text-md">{title}</p>
+        </div>
+      </CardHeader>
+      <CardBody>
+        <p className="text-xs">{description}</p>
+      </CardBody>
+      <CardFooter className="justify-center">
+        <div className="col-span-12 mt-1 flex justify-center">
+          <button className="text-xs outline text-danger w-full hover:bg-blue-600 border-danger-200 px-2 py-1 rounded">
+            {buttonText}
+          </button>
+        </div>
+      </CardFooter>
+    </Card>
+  );
 
   const images = [
     { src: "https://nextui.org/images/card-example-6.jpeg", alt: 'Image 1', legend: 'Image 1 legend' },
@@ -96,27 +137,17 @@ export default async function Home() {
         <CarouselComponent images={images} />
       </div>
 
-      <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-        {list.map((item, index) => (
-          <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}>
-            <CardBody className="overflow-visible p-0">
-              <Image
-                shadow="sm"
-                radius="lg"
-                width="100%"
-                alt={item.title}
-                className="w-full object-cover h-[140px]"
-                src="https://nextui.org/images/hero-card-complete.jpeg"
-              />
-            </CardBody>
-            <CardFooter className="text-small justify-between">
-              <b>{item.title}</b>
-              <p className="text-default-500">{item.price}</p>
-            </CardFooter>
-          </Card>
+      <div className="gap-6 pt-2 justify-center grid grid-cols-2 sm:grid-cols-4">
+        {data.map((item, index) => (
+          <CardComponent
+            key={index}
+            title={item.title}
+            description={item.description}
+            buttonText={item.buttonText}
+            Icon={item.icon}
+          />
         ))}
       </div>
-
     </section>
   );
 }

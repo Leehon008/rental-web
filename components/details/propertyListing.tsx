@@ -9,7 +9,6 @@ interface Property {
     id: number;
     title: string;
     description: string;
-    // Define other properties as per your API response
 }
 
 const fetcher = async (url: string) => {
@@ -18,7 +17,7 @@ const fetcher = async (url: string) => {
         throw new Error('Failed to fetch data');
     }
     const data = await res.json();
-    return data.data; // Assuming 'data' contains the array of properties
+    return data.data;
 };
 
 function PropertyList() {
@@ -27,7 +26,6 @@ function PropertyList() {
     if (error) return <div>Error loading properties</div>;
     if (!properties) return <div>Loading...</div>;
 
-    console.log('...rentals..', properties);
     let latestPropertiesForSale = properties.latestPropertiesForSale;
 
     // Check if properties is an array before mapping over it

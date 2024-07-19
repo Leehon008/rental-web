@@ -27,8 +27,6 @@ function PropertyRental() {
     if (error) return <div>Error loading properties</div>;
     if (!properties) return <div>Loading...</div>;
 
-    console.log('...rentals..', properties.latestPropertiesToRent);
-
     let latestPropertiesToRent = properties.latestPropertiesToRent;
 
     if (!Array.isArray(latestPropertiesToRent)) {
