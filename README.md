@@ -1,4 +1,22 @@
-# Next.js & NextUI Template
+# Property management using Next.js & NextUI Template
+
+## Topic Requested
+`Design a mini property listing website using Next.js 14+ and Tailwind CSS. The site should be responsive, catering to screens from small mobile phones to large desktop screens. Refer to the
+attached designs in the zipped folder, which includes the Home Page, Listings Page (with Grid and List view toggle), and Single Listing Page. `
+
+### Screenshots
+![image](https://github.com/user-attachments/assets/fcb71bd3-3102-4a75-b588-7bacbcda6cc7)
+
+![image](https://github.com/user-attachments/assets/510de504-fcaf-4ea4-9262-95db44e05bd5)
+
+![image](https://github.com/user-attachments/assets/7fce11d8-c15b-4db6-9922-fe54c5adc2f0)
+
+- to View the toggle functions, click on the rentals navigation and use the switch 
+![image](https://github.com/user-attachments/assets/b6f7dc9b-b2ea-418d-9172-12ac887491b1)
+
+![image](https://github.com/user-attachments/assets/834c7116-7e96-41db-ae2c-ab52e82f0ca6)
+
+
 
 This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
 
