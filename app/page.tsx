@@ -7,13 +7,13 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Image, Tab, Tabs } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, CheckboxGroup, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Image, Tab, Tabs } from "@nextui-org/react";
 import ImageCarousel from "@/components/carousel";
 import CarouselComponent from "@/components/carousel";
 import { getServerSideProps } from "@/components/services/apiService";
 import PropertyList from "@/components/details/propertyListing";
 import PropertyRental from "@/components/details/propertyRentals";
-import { FaBeer, FaBusinessTime, FaHouseUser, FaMoneyBill, FaWarehouse } from "react-icons/fa";
+import { FaBeer, FaBusinessTime, FaChevronDown, FaHouseUser, FaMoneyBill, FaSearch, FaWarehouse } from "react-icons/fa";
 // import { MyCard } from "@/components/card";
 
 export default async function Home() {
@@ -115,19 +115,87 @@ export default async function Home() {
   ];
 
   return (<>
-    <div className="flex w-full flex-col background-size: cover; z-34  justify-center" style={{ backgroundImage: `url('https://nextui.org/images/card-example-5.jpeg')` }}>
-      <Tabs aria-label="Options" color="danger" className="flex w-full justify-center">
+    <div className="flex w-full flex-col background-size: cover; z-34  justify-center" style={{ backgroundImage: `url('https://fsboafrica.com/images/listing-2-2.jpg')` }}>
+      <Tabs aria-label="Options" color="danger" style={{ paddingLeft: '30px', paddingRight: '30px' }} className="flex w-600 justify-center">
         <Tab key="sale" title="For Sale" style={{ paddingTop: '10px', }}>
           <Card>
             <CardBody>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div className="grid grid-cols-3 gap-2 justify-between">
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button
+                      className="text-sm font-normal text-default-600 bg-default-100"
+                      href="/"
+                      endContent={<FaChevronDown className="text-black" />}
+                      variant="flat">Property Type</Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Static Actions">
+                    <DropdownItem key="new">
+                      <CheckboxGroup
+                        label="Commercial"
+                        defaultValue={["commercial", "leisure"]}
+                      >
+                        <Checkbox value="commercial">Commercial</Checkbox>
+                        <Checkbox value="educational">Educational</Checkbox>
+                        <Checkbox value="leisure">Leisure/Hospitality</Checkbox>
+                      </CheckboxGroup>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+                <input
+                  className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  placeholder="Search..."
+                // onChange={(e) => handleSearch(e.target.value)}
+                // defaultValue={searchParams!.get('query')?.toString()}
+                />
+                <Button
+                  className="text-sm font-normal text-white bg-danger"
+                  href="/"
+                  startContent={<FaSearch className="text-black" />}
+                  variant="flat">Search</Button>
+              </div>
+
             </CardBody>
           </Card>
         </Tab>
-        <Tab key="videos" title="Videos">
+        <Tab key="rent" title="To Rent" style={{ paddingTop: '10px', }}>
           <Card>
             <CardBody>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <div className="grid grid-cols-3 gap-2 justify-between">
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button
+                      className="text-sm font-normal text-default-600 bg-default-100"
+                      href="/"
+                      endContent={<FaChevronDown className="text-black" />}
+                      variant="flat">Property Type</Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Static Actions">
+                    <DropdownItem key="commercial">
+                      <CheckboxGroup
+                        label="Commercial"
+                        defaultValue={["commercial"]}
+                      >
+                        <Checkbox value="commercial">Commercial</Checkbox>
+                        <Checkbox value="educational">Educational</Checkbox>
+                        <Checkbox value="leisure">Leisure/Hospitality</Checkbox>
+                      </CheckboxGroup>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+                <input
+                  className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  placeholder="Search..."
+                // onChange={(e) => handleSearch(e.target.value)}
+                // defaultValue={searchParams!.get('query')?.toString()}
+                />
+                <Button
+                  className="text-sm btn-sm font-normal text-white bg-danger"
+                  href="/"
+                  startContent={<FaSearch className="text-black" />}
+                  variant="flat">Search</Button>
+              </div>
+
             </CardBody>
           </Card>
         </Tab>
