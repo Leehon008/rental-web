@@ -21,7 +21,7 @@ const PropertyCard = ({ image, data }: any) => {
                 {/* Replace Image and Card Footer with your actual implementation */}
                 <img src={firstImage} alt={image.alt} className="w-full h-80 object-cover" />
                 <div className="absolute bottom-0   left-0 right-0 p-4 bg-white bg-opacity-80 text-white">
-                    <p className="text-xs text-black">Property Type</p>
+                    <p className="text-xs text-black">Property Type: {image.status}</p>
                     <h4 className="text-sm font-semibold text-black ">{image.title}</h4>
                     <p className="text-xs text-black justify-start">{image.address}</p>
                     <p className="text-sm text-black justify-start">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
