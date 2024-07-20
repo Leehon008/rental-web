@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
-import { link as linkStyles } from "@nextui-org/theme";
+import { cn, link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
@@ -19,11 +19,12 @@ import {
   TagUser,
 } from "@/components/icons";
 import BgImage from "./bgImage";
+import { FaArrowDown, FaChevronDown, FaUserCircle } from "react-icons/fa";
 // import { MyDropdown } from "./dropdown";
 
 export const Navbar = () => {
   return (
-    <><NextUINavbar maxWidth="xl" position="sticky">
+    <><NextUINavbar maxWidth="xl" position="sticky" className="bg-white">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -34,8 +35,20 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
+        <NavbarItem className="hidden md:flex">
+          <Button
+            className="text-sm  font-normal text-default-600 bg-transparent-50"
+            href="/"
+            endContent={<FaChevronDown />}
+            variant="flat">For Sale</Button>
+          <Button
+            className="text-sm  font-normal text-default-600 bg-transparent-50"
+            href="/"
+            endContent={<FaChevronDown />}
+            variant="flat">To Rent</Button>
+        </NavbarItem>
         <NavbarItem>
-          <ul className="hidden lg:flex gap-4 justify-center ml-2">
+          <ul className="hidden lg:flex gap-4  font-normal text-default-600 justify-center ml-2">
             {siteConfig.navItems.map((item) => (
               <NavbarItem key={item.href}>
                 <NextLink
@@ -63,7 +76,7 @@ export const Navbar = () => {
           <Button
             className="text-sm font-normal text-default-600 bg-default-100"
             href="/"
-            endContent={<HeartFilledIcon className="text-danger" />}
+            endContent={<FaUserCircle className="text-black" />}
             variant="flat">Login</Button>
         </NavbarItem>
       </NavbarContent>
