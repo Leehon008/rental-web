@@ -1,14 +1,12 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react';
 import React from 'react';
-import { RedWhatsAppIcon } from './icons';
-import { FaHome, FaUser, FaPhone, FaWhatsapp, FaMailchimp, FaMailBulk } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaMailBulk } from 'react-icons/fa';
 
 const PropertyCard = ({ image, data }: any) => {
 
 
     // Check if image.images is defined before accessing image.images[0]
     if (!image.images || !Array.isArray(image.images) || image.images.length === 0) {
-        return <div>No images found</div>; // Handle case where images array is empty or undefined
+        return <div>No Data found</div>; // Handle case where images array is empty or undefined
     }
 
     // Access the first image URL from the images array
@@ -44,8 +42,12 @@ const PropertyCard = ({ image, data }: any) => {
 
                         <div className="mt-2 flex justify-end">
                             <button className="text-xs outline text-danger border-danger-300 hover:bg-blue-600 px-2 py-1 rounded">
-                                Details
+                                <a
+                                    href={`/propertyDetail/${image.id}/view`} className="text-danger no-underline">
+                                    Details
+                                </a>
                             </button>
+
                         </div>
                     </div>
                 </div>

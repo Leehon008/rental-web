@@ -22,9 +22,9 @@ export const getDataOnServer = async () => {
     return { data, isError, error };
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(url: string) {
     try {
-        const res = await fetch('https://fsboafrica.com/api/properties/latest');
+        const res = await fetch(url);
         const data = await res.json();
 
         if (!data) {

@@ -21,8 +21,6 @@ export default function RentalsPage() {
 
   return (
     <Suspense>
-
-
       <main>
         <Search placeholder="Search properties..." />
       </main>
