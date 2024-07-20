@@ -1,6 +1,6 @@
 import PropertyCard from '@/components/propertyCard';
 import { Card, CardBody, CardFooter, CardHeader, Image } from '@nextui-org/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import useSWR from 'swr';
 
@@ -20,6 +20,8 @@ const fetcher = async (url: string) => {
 };
 function PropertyGridView() {
   const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/latest', fetcher);
+  const itemsPerPage = 6; // Number of items per page
+  const [currentPage, setCurrentPage] = useState(1); // State to track current page
 
   if (error) return <div>Error loading properties</div>;
   if (!properties) return <div>Loading...</div>;
@@ -42,40 +44,56 @@ function PropertyGridView() {
     return resultArray;
   }, []);
 
-  const Grid = ({ items }: any) => {
-    return (
-      <div className="grid grid-cols-3 gap-4">
-        {items.map((item: any, index: any) => (
-          <div key={index} className="bg-gray-200 p-4">
-            {item.name}
-          </div>
-        ))}
-      </div>
-    );
+  // Calculate total number of pages
+  const totalPages = Math.ceil(chunkedImages.flat().length / itemsPerPage);
+
+  // Calculate starting and ending index of current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, chunkedImages.flat().length);
+
+  // Handle pagination change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
     <div className="grid grid-cols-3 gap-2">
       {chunkedImages.map((item: any, index: any) => (
-        <div className="">
-          {item.map((image: any, i: any) => (
-            <>
-              <Card shadow='sm' className='p-2' key={i}>
-                <CardHeader className="overflow-visible">
-                  <img src={image.images[0].filePath} alt={image.alt} className="w-full h-60 object-cover" />
-                </CardHeader>
-                <CardBody className="overflow-visible p-1">
-                  <p className="text-xs text-black">Property Type : {image.status}</p>
-                  <h4 className="text-sm font-semibold text-black ">{image.title}</h4>
-                  <p className="text-xs text-black justify-start">{image.address}</p>
-                  <p className="text-sm text-black justify-start">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
-                </CardBody>
-              </Card>
-              <br /></>
+        <div key={index} className="">
+          {item.slice(startIndex, endIndex).map((image: any, i: any) => (
+            <Card shadow='sm' className='p-2' key={i}>
+              <CardHeader className="overflow-visible">
+                <img src={image.images[0].filePath} alt={image.alt} className="w-full h-60 object-cover" />
+              </CardHeader>
+              <CardBody className="overflow-visible p-1">
+                <p className="text-xs text-black">Property Type: {image.status}</p>
+                <h4 className="text-sm font-semibold text-black">{image.title}</h4>
+                <p className="text-xs text-black">{image.address}</p>
+                <p className="text-sm text-black">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
+              </CardBody>
+            </Card>
           ))}
         </div>
       ))}
+      {/* Pagination controls */}
+      <div className="col-span-3 flex justify-center mt-4">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-3 py-1 mr-2 bg-gray-200 text-gray-700 rounded-md disabled:bg-gray-300 disabled:text-gray-400"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="px-3 py-1 ml-2 bg-gray-200 text-gray-700 rounded-md disabled:bg-gray-300 disabled:text-gray-400"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
-}
+};
+
 export default PropertyGridView;

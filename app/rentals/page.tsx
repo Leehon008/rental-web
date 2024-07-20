@@ -21,7 +21,10 @@ export default function RentalsPage() {
 
   return (
     <Suspense>
-      <Search placeholder="Search properties..." />
+      <main>
+
+        <Search placeholder="Search properties..." />
+      </main>
     </Suspense >
   );
 }
