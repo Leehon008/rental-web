@@ -22,16 +22,6 @@ export default function RentalsPage() {
   return (
     <Suspense>
       <Search placeholder="Search properties..." />
-      <br />
-      <div className="w-full grid padding-top:1px col-span-12 sm:col-span-7">
-        <h3 className="top-1 bottom-1 flex-col items-start text-black font-medium text-2xl"><strong>Properties For Sale</strong></h3>
-      </div>
-      <br />
-      <div className="relative grid flex flex-1 flex-shrink-0">
-        {/* <PropertyListView /> */}
-        <PropertyGridView />
-        <CarouselComponent images={images} />
-      </div>
-    </Suspense>
+    </Suspense >
   );
 }

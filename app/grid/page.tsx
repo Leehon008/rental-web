@@ -55,30 +55,27 @@ function PropertyGridView() {
   };
 
   return (
-    <section className="">
-      <ul className="">
-        {chunkedImages.map((item: any, index: any) => (
-          <li key={index} className="">
-            {item.map((image: any, i: any) => (
-              <>
-                <Card shadow='sm' className='p-2' key={i}>
-                  <CardHeader className="overflow-visible">
-                    <img src={image.images[0].filePath} alt={image.alt} className="w-full h-60 object-cover" />
-                  </CardHeader>
-                  <CardBody className="overflow-visible p-1">
-                    <p className="text-xs text-black">Property Type : {image.status}</p>
-                    <h4 className="text-sm font-semibold text-black ">{image.title}</h4>
-                    <p className="text-xs text-black justify-start">{image.address}</p>
-                    <p className="text-sm text-black justify-start">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
-                  </CardBody>
-                </Card>
-                <br /></>
-            ))}
-          </li>
-        ))}
-      </ul>
-    </section>
-
+    <div className="grid grid-cols-3 gap-2">
+      {chunkedImages.map((item: any, index: any) => (
+        <div className="">
+          {item.map((image: any, i: any) => (
+            <>
+              <Card shadow='sm' className='p-2' key={i}>
+                <CardHeader className="overflow-visible">
+                  <img src={image.images[0].filePath} alt={image.alt} className="w-full h-60 object-cover" />
+                </CardHeader>
+                <CardBody className="overflow-visible p-1">
+                  <p className="text-xs text-black">Property Type : {image.status}</p>
+                  <h4 className="text-sm font-semibold text-black ">{image.title}</h4>
+                  <p className="text-xs text-black justify-start">{image.address}</p>
+                  <p className="text-sm text-black justify-start">Beds: {image.bedrooms} &nbsp; Baths: {image.bathrooms} &nbsp; {image.propertySize}</p>
+                </CardBody>
+              </Card>
+              <br /></>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 }
 export default PropertyGridView;
