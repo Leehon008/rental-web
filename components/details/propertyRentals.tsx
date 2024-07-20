@@ -22,19 +22,19 @@ const fetcher = async (url: string) => {
 };
 
 function PropertyRental() {
-    const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/latest', fetcher);
+    const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/to-rent?search=to-rent', fetcher);
 
     if (error) return <div>Error loading properties</div>;
     if (!properties) return <div>Loading...</div>;
 
     let latestPropertiesToRent = properties.latestPropertiesToRent;
 
-    if (!Array.isArray(latestPropertiesToRent)) {
-        console.error('Properties data is not an array:', latestPropertiesToRent);
+    if (!Array.isArray(properties)) {
+        console.error('Properties data is not an array:', properties);
         return <div>Unexpected data format</div>;
     }
 
-    const rentProperties = latestPropertiesToRent.reduce((resultArray: any, item: any, index: any) => {
+    const rentProperties = properties.reduce((resultArray: any, item: any, index: any) => {
         const chunkIndex = Math.floor(index / 3);
         if (!resultArray[chunkIndex]) {
             resultArray[chunkIndex] = [];

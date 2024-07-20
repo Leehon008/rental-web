@@ -21,7 +21,7 @@ const fetcher = async (url: string) => {
 };
 
 function PropertyList() {
-    const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/latest', fetcher);
+    const { data: properties, error } = useSWR('https://fsboafrica.com/api/properties/for-sale?search=for-sale', fetcher);
 
     if (error) return <div>Error loading properties</div>;
     if (!properties) return <div>Loading...</div>;
@@ -29,13 +29,13 @@ function PropertyList() {
     let latestPropertiesForSale = properties.latestPropertiesForSale;
 
     // Check if properties is an array before mapping over it
-    if (!Array.isArray(latestPropertiesForSale)) {
-        console.error('Properties data is not an array:', latestPropertiesForSale);
+    if (!Array.isArray(properties)) {
+        console.error('Properties data is not an array:', properties);
         return <div>Unexpected data format</div>;
     }
 
     // Chunk the images array into groups of 3
-    const chunkedImages = latestPropertiesForSale.reduce((resultArray: any, item: any, index: any) => {
+    const chunkedImages = properties.reduce((resultArray: any, item: any, index: any) => {
         const chunkIndex = Math.floor(index / 3); // 3 items per slide
         if (!resultArray[chunkIndex]) {
             resultArray[chunkIndex] = []; // start a new chunk
