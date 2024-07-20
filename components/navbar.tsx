@@ -36,16 +36,28 @@ export const Navbar = () => {
 
       <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         <NavbarItem className="hidden md:flex">
-          <Button
-            className="text-sm  font-normal text-default-600 bg-transparent-50"
-            href="/"
-            endContent={<FaChevronDown />}
-            variant="flat">For Sale</Button>
-          <Button
-            className="text-sm  font-normal text-default-600 bg-transparent-50"
-            href="/"
-            endContent={<FaChevronDown />}
-            variant="flat">To Rent</Button>
+          <NextLink
+            className={clsx(
+              linkStyles({ color: "foreground" }),
+              " text-md  font-normal text-default-600 bg-transparent-50",
+            )}
+            color="foreground"
+            href='sale'
+          >
+            For Sale &nbsp;  <FaChevronDown className=" text-sm  font-normal text-default-600 py-1 h-5" />
+          </NextLink>
+          &nbsp;
+          &nbsp;
+          <NextLink
+            className={clsx(
+              linkStyles({ color: "foreground" }),
+              " text-md  font-normal text-default-600 bg-transparent-50",
+            )}
+            color="foreground"
+            href='rentals'
+          >
+            To Rent &nbsp;  <FaChevronDown className=" text-sm  font-normal text-default-600 py-1 h-5" />
+          </NextLink>
         </NavbarItem>
         <NavbarItem>
           <ul className="hidden lg:flex gap-4  font-normal text-default-600 justify-center ml-2">
@@ -64,7 +76,6 @@ export const Navbar = () => {
               </NavbarItem>
             ))}
           </ul>
-          {/* <MyDropdown /> */}
         </NavbarItem>
       </NavbarContent>
 
@@ -103,7 +114,7 @@ export const Navbar = () => {
         </div>
       </NavbarMenu>
     </NextUINavbar>
-      <BgImage />
+      {/* <BgImage /> */}
     </>
   );
 };

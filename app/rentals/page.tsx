@@ -4,7 +4,7 @@ import PropertyList from "@/components/details/propertyListing";
 import PropertyRental from "@/components/details/propertyRentals";
 import { title } from "@/components/primitives";
 import Search from "@/components/search";
-import { Card, CardHeader, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Image, Tab, Tabs } from "@nextui-org/react";
 import { FaHouseUser, FaMoneyBill, FaWarehouse } from "react-icons/fa";
 import List from "../listview/page";
 import PropertyListView from "../listview/page";
@@ -21,8 +21,9 @@ export default function RentalsPage() {
 
   return (
     <Suspense>
-      <main>
 
+
+      <main>
         <Search placeholder="Search properties..." />
       </main>
     </Suspense >

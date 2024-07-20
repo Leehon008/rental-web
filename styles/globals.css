@@ -32,3 +32,30 @@
     padding: 20px;
     margin-bottom: 10px;
 }
+
+/* Example of using CSS */
+.z-34 {
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    height: 400px;
+    padding-top: 5px;
+}
+
+.z-34 .Tabs .Tab {
+    /* Additional styling for centering tabs */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 5px;
+    /* Ensures tabs container takes full height of parent */
+}
+
+.z-34 .TabList {
+    /* Optionally, style the tab list if needed */
+}
+
+.z-34 .Tab {
+    /* Optionally, style individual tabs */
+}

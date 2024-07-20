@@ -7,7 +7,7 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Image, Tab, Tabs } from "@nextui-org/react";
 import ImageCarousel from "@/components/carousel";
 import CarouselComponent from "@/components/carousel";
 import { getServerSideProps } from "@/components/services/apiService";
@@ -114,7 +114,26 @@ export default async function Home() {
     { src: "https://nextui.org/images/card-example-4.jpeg", alt: 'Image 3', legend: 'Image 3 legend' },
   ];
 
-  return (
+  return (<>
+    <div className="flex w-full flex-col background-size: cover; z-34  justify-center" style={{ backgroundImage: `url('https://nextui.org/images/card-example-5.jpeg')` }}>
+      <Tabs aria-label="Options" color="danger" className="flex w-full justify-center">
+        <Tab key="sale" title="For Sale" style={{ paddingTop: '10px', }}>
+          <Card>
+            <CardBody>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </CardBody>
+          </Card>
+        </Tab>
+        <Tab key="videos" title="Videos">
+          <Card>
+            <CardBody>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </CardBody>
+          </Card>
+        </Tab>
+      </Tabs>
+    </div >
+
     <section className="flex flex-col items-center justify-center gap-4 py-2">
 
       <div className="w-full padding-top:1px col-span-12 sm:col-span-7">
@@ -149,5 +168,6 @@ export default async function Home() {
         ))}
       </div>
     </section>
+  </>
   );
 }
